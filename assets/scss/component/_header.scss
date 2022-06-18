@@ -1,0 +1,178 @@
+.site-header {
+    padding: 20px 0;
+    position: relative;
+    z-index: 5;
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.main-navigation {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-toggle {
+    background-color: transparent;
+    border: none;
+
+    @include lg {
+        display: none;
+    }
+
+    span {
+        margin: 7px;
+        display: block;
+        background-color: $clr-dark;
+        width: 30px;
+        height: 2px;
+    }
+}
+
+.nav-container {
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    transition: transform 0.3s ease-in-out;
+    background-color: $clr-black;
+    padding: 60px 30px;
+    transform: scaleX(0);
+    transform-origin: left;
+
+    &>* {
+        transform: translateY(10px);
+        opacity: 0;
+        transition: all 0.3s ease;
+        transition-delay: 0.5s;
+
+        @include lg {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    &.opened {
+        transform: scaleX(1);
+        z-index: 99;
+
+        &>* {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    &.closed {
+        transform: transform 0.3s ease;
+        transition-delay: 0.5s;
+
+        &>* {
+            opacity: 0;
+            transition-delay: unset;
+        }
+    }
+
+    .menu {
+        flex-direction: column;
+
+        @include lg {
+            flex-direction: row;
+        }
+    }
+
+    @include lg {
+        background-color: transparent;
+        transform: scaleX(1);
+        position: unset;
+        overflow: visible;
+        height: auto;
+        display: block;
+        padding: 0;
+    }
+
+    .mobile-set {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+
+        @include lg {
+            display: none;
+        }
+
+    }
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+
+    @include lg {
+        align-items: center;
+    }
+
+    &>li {
+        @include lg {
+            padding: 10px 0;
+        }
+    }
+
+    .menu-link {
+        font-size: $fs-16;
+        display: inline-block;
+        position: relative;
+        font-weight: 600;
+        color: $clr-white;
+
+        @include lg {
+            color: $clr-black;
+        }
+
+        &:hover {
+            color: $clr-primary;
+        }
+    }
+
+
+}
+
+
+.dropdown {
+    position: relative;
+    padding-right: 15px !important;
+
+    &::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-bottom: 2px solid $clr-dark;
+        border-left: 2px solid $clr-dark;
+        position: absolute;
+        top: 35%;
+        transform: rotate(-45deg);
+        right: 0;
+    }
+
+    &:hover {
+        .sub-menu {
+            display: block;
+        }
+    }
+}
+
+.sub-menu {
+    position: absolute;
+    z-index: 9;
+    padding: 20px;
+    background-color: $clr-white;
+    box-shadow: 0 0 5px rgba($clr-dark, 20%);
+    display: none;
+    min-width: 200px;
+    top: 100%;
+
+    &>li+li {
+        margin-top: 15px;
+    }
+}
