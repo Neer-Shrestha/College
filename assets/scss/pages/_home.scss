@@ -1,6 +1,14 @@
 .about {
     padding-top: 50px;
 
+    .row {
+        justify-content: center;
+
+        @include lg {
+            justify-content: space-between;
+        }
+    }
+
     .info {
         margin-bottom: 30px;
     }
@@ -57,12 +65,20 @@
 .box-group {
     display: grid;
     grid-template-columns: repeat(2, 180px);
-    gap: 50px;
+    gap: 24px;
+
+    @include xl {
+        gap: 50px;
+    }
 
     .box-wrap {
         display: flex;
         flex-direction: column;
-        gap: 50px;
+        gap: 24px;
+
+        @include xl {
+            gap: 50px;
+        }
 
         &:nth-child(2) {
             margin-top: 50px;
