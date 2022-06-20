@@ -1,7 +1,11 @@
 .testimonial-wrapper {
-    padding: 50px;
+    padding: 30px;
     box-shadow: 4px 4px 50px rgba(0, 0, 0, 0.05);
     position: relative;
+
+    @include md {
+        padding: 50px;
+    }
 
     .testimonial-deco {
         display: none;
@@ -10,9 +14,7 @@
         right: -100px;
     }
 }
-* {
-    outline: 1px solid red;
-}
+
 .slider-wraper {
     overflow: hidden;
 }
@@ -32,8 +34,17 @@
 
 .slider-item {
     display: flex;
-    gap: 50px;
-    // min-width: 805px;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include lg {
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 50px;
+        text-align: start;
+    }
 
     .student-name {
         margin-bottom: 10px;
@@ -77,5 +88,11 @@
         justify-content: center;
         align-items: center;
         box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+           transform: scale(1.2);
+           box-shadow: 0px 0px 30px rgba($clr-primary, 40%);
+        }
     }
 }

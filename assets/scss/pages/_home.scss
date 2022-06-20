@@ -12,6 +12,20 @@
     .info {
         margin-bottom: 30px;
     }
+
+    .info-box {
+        width: 130px;
+        transition: all 0.3s ease-in-out;
+
+        @include sm {
+            width: 180px;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 30px rgba($clr-primary, 20%);
+         }
+    }
 }
 
 .info-box {
@@ -24,6 +38,7 @@
     justify-content: center;
     gap: 20px;
     box-shadow: 4px 4px 50px rgba(0, 0, 0, 0.05);
+
 
     .text {
         font-size: $fs-16;
@@ -64,8 +79,15 @@
 
 .box-group {
     display: grid;
-    grid-template-columns: repeat(2, 180px);
     gap: 24px;
+    grid-template-columns: repeat(2, 130px);
+    
+    @include sm {
+        grid-template-columns: repeat(2, 180px);
+
+    }
+
+    
 
     @include xl {
         gap: 50px;
@@ -97,6 +119,10 @@
             color: $clr-white;
         }
     }
+}
+.project-bottom {
+    position: relative;
+    margin-top: -5px;
 }
 
 .counted-list {
@@ -141,6 +167,14 @@
 .calender-item {
     display: flex;
     gap: 20px;
+    flex-direction: column;
+    align-items: center;
+
+
+    @include sm {
+        flex-direction: row;
+        align-items: stretch;
+    }
 
     .info-content {
         background-color: $clr-white;
@@ -149,7 +183,12 @@
         justify-content: center;
         flex-direction: column;
         box-shadow: 4px 4px 50px rgba(0, 0, 0, 0.05);
-        flex: 1;
+        width: 100%;
+        text-align: center;
+
+        @include sm {
+            text-align: start;
+        }
     }
 }
 
@@ -161,8 +200,3 @@
     }
 }
 
-// .toppers {
-//     .topper-title {
-//         margin-bottom: 30px;
-//     }
-// }
